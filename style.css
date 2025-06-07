@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+h1 {
+font-size: 3rem;
+font-weight:900;
+letter-spacing: -0.07em; /* tighter spacing */
+mix-blend-mode: difference;
+background:red;
+
+}
+
+body{
+display: flex;
+}
+.cover{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 1rem;
+    width:80vw;
+    height:100vh;
+    background-color: black;
+    color:white;
+    padding: 2rem;
+    flex-shrink: 0;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: white; /* or any high-contrast color */
+  z-index: -1;
+}
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.cover .text,
+.cover .arrow {
+    position: relative;
+    z-index: 1;
+}
+
+.cover .text {
+    height:50vh;
+    transform-origin:  left top;
+    transform:rotate(90deg)
+    
+}
+
+nav{
+    display: grid;
+    place-items: center;
+    width:16vw;
+    height:100vh;
+    flex-shrink: 0;
+}
+
+nav ul {
+    margin: auto;
+    list-style: none;
+}
+
+nav ul li {
+    width:100%;
+    padding-bottom: .5rem;
+    margin: auto;
+}
+
+nav ul li:first-of-type{
+padding-bottom: 2rem;}
+
+nav ul li a {
+    display: flex; /* Add this */
+    justify-content: center; /* Horizontal centering */
+    width:100%;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color:black;
+    text-align: center;
+}
+
+nav ul li a img {
+width:40%;
+}
+
+
+
+nav li a:hover{
+text-decoration: red wavy underline;
+}
