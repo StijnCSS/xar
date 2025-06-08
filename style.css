@@ -21,9 +21,9 @@ display: flex;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 1rem;
-    width:80vw;
+    width:100vw;
     height:100vh;
     background-color: black;
     color:white;
@@ -31,43 +31,34 @@ display: flex;
     flex-shrink: 0;
 }
 
-.cover::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: white; /* or any high-contrast color */
-  z-index: -1;
-}
-
-.bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-}
-
-.cover .text,
-.cover .arrow {
-    position: relative;
-    z-index: 1;
-}
-
 .cover .text {
-    height:50vh;
-    transform-origin:  left top;
-    transform:rotate(90deg)
-    
+  position: absolute;
+  transform: rotate(90deg);
+  transform-origin: left top; /* or center */
+  top: 10%;
+  left: 95%;
+  translate: 0 -50%; /* optional: keeps it centered vertically */
 }
 
-nav{
+nav {
     display: grid;
     place-items: center;
-    width:16vw;
-    height:100vh;
+    width: 100vw;
+    height: 100vh;
     flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: white;
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+}
+
+nav:popover-open {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 nav ul {
@@ -103,4 +94,10 @@ width:40%;
 
 nav li a:hover{
 text-decoration: red wavy underline;
+}
+
+@media screen and (min-width: 800px) {
+    nav {
+        width: 20vw;
+    }
 }
