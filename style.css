@@ -42,7 +42,7 @@ display: flex;
 
 .video-btn {
   position: fixed;
-  top: 1rem;
+  bottom: 1rem;
   left: 1rem;
   font-size: 2rem;
   background: none;
@@ -153,7 +153,7 @@ button.arrow {
 
 
 body:has([popover]:popover-open) button.arrow {
-    transform: translateX(-18vw);
+    transform: translateX(-20vw);
 }
 
 nav li a:hover{
