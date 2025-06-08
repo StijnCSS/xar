@@ -8,7 +8,6 @@ font-size: 3rem;
 font-weight:900;
 letter-spacing: -0.07em; /* tighter spacing */
 mix-blend-mode: difference;
-background:red;
 
 }
 
@@ -31,30 +30,61 @@ display: flex;
     flex-shrink: 0;
 }
 
-.cover .text {
+.cover video.cover-video {
   position: absolute;
-  transform: rotate(90deg);
-  transform-origin: left top; /* or center */
-  top: 10%;
-  left: 95%;
-  translate: 0 -50%; /* optional: keeps it centered vertically */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
-nav {
+.video-btn {
   position: fixed;
-display: none;
-  inset: unset;
+  top: 1rem;
+  left: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  z-index: 3;
+  cursor: pointer;
+  mix-blend-mode: difference;
+}
+
+.cover .text {
+    position: absolute;
+    top: 20px;
+    right: -180px;
+    transform: rotate(90deg);
+    transform-origin: top left;
+    z-index: 2;
+    mix-blend-mode: difference;
+    color: white;
+}
+
+[popover] {
+  position: fixed;
+  display:grid;
+  place-items: center;
   top: 0;
   right: 0;
   width: 100vw;
   height: 100vh;
   background-color: white;
-  animation: popover-out 0.3s ease-out alternate;
+  border: none;
+  /* inset: unset; */
+  transform: translateX(100%);
+  pointer-events: none;
+
+  transition: transform 0.4s ease;
+  transition-behavior: allow-discrete;
 }
 
-nav:popover-open {
-    display:grid;
-    place-items: center;
+[popover]:popover-open {
+  transform: translateX(0%);
+  pointer-events: auto;
 }
 
 @keyframes popover-out {
@@ -68,9 +98,11 @@ nav:popover-open {
 }
 
 nav ul {
+    position: relative;
     margin: auto;
     list-style: none;
 }
+
 
 nav ul li {
     width:100%;
@@ -96,56 +128,49 @@ nav ul li a img {
 width:40%;
 }
 
+button.arrow {
+    position: fixed;
+    right:2rem;
+    top:50%;
+    color:white;
+    font-size: 6rem;
+    background: none;
+    border:none;
+    transition: transform 300ms ease-out;
+    mix-blend-mode: difference;
+    color: white;
+}
 
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+body:has([popover]:popover-open) button.arrow {
+    transform: translateX(-18vw);
+}
 
 nav li a:hover{
 text-decoration: red wavy underline;
 }
 
-@media screen and (min-width: 800px) {
-    nav {
-        width: 20vw;
-    }
-}
-
-.arrow {
-    position: absolute;
-    top:50%;
-    right:50%;
-}
-
-
-
-
-
-@media screen and (min-width: 800px) {
-    [popover] {
-        width: 30vw;
-    }
-
-
-  @keyframes popover-out {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0%);
-    }
-  }
-}
-
 @media screen and (min-width: 1200px) {
-    [popover] {
-        width: 20vw;
-    }
+  [popover] {
+    width: 20vw;
+    transform: translateX(500%);
+  }
 
-
-  @keyframes popover-out {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0%);
-    }
+  [popover]:popover-open {
+    transform: translateX(400%);
+  }
+  
+  .close-btn {
+    display: none;
   }
 }

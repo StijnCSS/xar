@@ -8,20 +8,22 @@
 </head>
 <body>
     <section class="cover">
+        <video class="cover-video" autoplay muted loop playsinline>
+          <source src="images/vid.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <button id="videoToggle" class="video-btn">⏸</button>
         <div class="text">
             <h1>XarStudio.</h1>
             <h2>Rotterdam, Zuid-Holland</h2>
             <h2>©2023</h2>
         </div>
 
-        <div class="arrow">
-                <button id="menuToggle" popovertarget="my-popover">
-          Menu <span class="arrow">→</span>
-        </button>
-        </div>
+    <button id="menuToggle" popovertarget="my-popover" class="arrow">❮</button>
         
     </section>
     <nav id="my-popover" popover>
+        <button popovertarget="my-popover" popovertargetaction="hide" class="close-btn">×</button>
     <ul>
         <li><a href=""><img src="./images/eye.png" alt=""></a></li>
         <li><a class ="projects" href="/projects">projects</a></li>
@@ -30,7 +32,6 @@
         <li><a href="/news">news</a></li>
     </ul>
     </nav>
-    
-    
+    <script src="script.js"></script>
 </body>
 </html>
